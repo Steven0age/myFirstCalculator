@@ -16,27 +16,35 @@
     <hr />
     <div class="taschenrechner">
       <div class="taschenrechnerfeld">
-        <span id="ergebnis">ERGEBNIS</span>
+        <span id="ergebnis" class="ergebnis">0</span>
         <div class="taschenrechnertasten">
           <button class="taste zahl" onclick="pressTaste(7)">7</button>
           <button class="taste zahl" onclick="pressTaste(8)">8</button>
           <button class="taste zahl" onclick="pressTaste(9)">9</button>
-          <button class="taste zeichen" onclick="berechnung('durch')">/</button>
+          <button class="taste zeichen" onclick="berechnungDurch()">/</button>
+        </div>
+        <div class="taschenrechnertasten">
           <button class="taste zahl" onclick="pressTaste(4)">4</button>
           <button class="taste zahl" onclick="pressTaste(5)">5</button>
           <button class="taste zahl" onclick="pressTaste(6)">6</button>
-          <button class="taste zeichen" onclick="berechnung('mal')">*</button>
+          <button class="taste zeichen" onclick="berechnungMal()">*</button>
+        </div>
+        <div class="taschenrechnertasten">
           <button class="taste zahl" onclick="pressTaste(1)">1</button>
           <button class="taste zahl" onclick="pressTaste(2)">2</button>
           <button class="taste zahl" onclick="pressTaste(3)">3</button>
-          <button class="taste zeichen" onclick="berechnung('minus')">-</button>
-          <button class="taste zeichen">CE</button>
+          <button class="taste zeichen" onclick="berechnungMinus()">-</button>
+        </div>
+        <div class="taschenrechnertasten">
+          <button class="taste zeichen" onclick="reset()">CE</button>
           <button class="taste zahl" onclick="pressTaste(0)">0</button>
-          <button class="taste istgleichzeichen">=</button>
-          <button class="taste zeichen" onclick="berechnung('plus')">+</button>
+          <button class="taste istgleichzeichen" onclick="istgleich()">
+            =
+          </button>
+          <button class="taste zeichen" onclick="berechnungPlus()">+</button>
         </div>
       </div>
-      <div class="logfile">LOGFIlE</div>
+      <div class="logfile">LOGFILE</div>
     </div>
   </body>
 </html>

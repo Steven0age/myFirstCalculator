@@ -1,20 +1,30 @@
 .taschenrechner {
   display: flex;
   justify-content: flex-start;
+  max-width: 600px;
+}
+.ergebnis {
+  height: 40px;
+  display: flex;
+  justify-content: end;
+  align-items: end;
+  font-size: 30px;
+  padding-right: 8px;
 }
 .taschenrechnerfeld {
   display: flex;
   flex-direction: column;
-  /* width: 80vw; */
+  width: 70vw;
 }
 .taschenrechnertasten {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
+  padding-bottom: 8px;
 }
 .taste {
-  width: 20%;
-  height: 11vh;
+  width: 23%;
+  height: 50px;
   font-size: 20px;
   border-radius: 4px;
   border-width: 1px;
@@ -31,9 +41,9 @@
 }
 
 .logfile {
-  /* width: 20vw; */
+  width: 30vw;
   border-left-width: 1px;
   border-color: #434343;
   border-left-style: solid;
-  background-color: aqua;
+  padding-left: 8px;
 }
