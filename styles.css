@@ -41,9 +41,14 @@
 }
 
 .logfile {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  overflow: auto;
+  height: 300px;
   width: 30vw;
+  padding-left: 8px;
   border-left-width: 1px;
   border-color: #434343;
   border-left-style: solid;
-  padding-left: 8px;
 }
