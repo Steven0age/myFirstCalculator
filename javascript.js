@@ -2,6 +2,7 @@ var rechenergebnis = 0;
 var wertA = false;
 var wertB = false;
 var rechenart = false;
+var logfileEntry = 0;
 
 function pressTaste(x) {
   if (wertB === false) {
@@ -43,6 +44,8 @@ function berechnungPlus() {
   } else if (wertA !== false && wertB !== false && rechenart !== "+") {
     istgleich();
     rechenart = "+";
+  } else if (wertA === false) {
+    return;
   } else {
     wertB = true;
     rechenart = "+";
@@ -58,6 +61,8 @@ function berechnungMinus() {
   } else if (wertA !== false && wertB !== false && rechenart !== "-") {
     istgleich();
     rechenart = "-";
+  } else if (wertA === false) {
+    return;
   } else {
     wertB = true;
     rechenart = "-";
@@ -71,6 +76,8 @@ function berechnungMal() {
   } else if (wertA !== false && wertB !== false && rechenart !== "*") {
     istgleich();
     rechenart = "*";
+  } else if (wertA === false) {
+    return;
   } else {
     wertB = true;
     rechenart = "*";
@@ -84,6 +91,8 @@ function berechnungDurch() {
   } else if (wertA !== false && wertB !== false && rechenart !== "/") {
     istgleich();
     rechenart = "/";
+  } else if (wertA === false) {
+    return;
   } else {
     wertB = true;
     rechenart = "/";
@@ -136,12 +145,17 @@ function reset() {
 }
 
 function updateEntry() {
-  let newLogfileEntry =
-    "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>";
-
-  let logfileEntry;
-  logfileEntry = String(newLogfileEntry) + String(logfileEntry);
-  document.getElementById("logfile").innerHTML = logfileEntry;
-  //console.log(typeof logfileEntry, logfileEntry);
-  // "<p>" + wertA + " + " + wertB + " = " + rechenergebnis + "</p>";
+  if (logfileEntry == 0) {
+    var newLogfileEntry = 0;
+    newLogfileEntry = [
+      "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>",
+    ];
+    logfileEntry = newLogfileEntry;
+    document.getElementById("logfile").innerHTML = logfileEntry;
+  } else {
+    newLogfileEntry =
+      "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>";
+    logfileEntry = newLogfileEntry + logfileEntry;
+    document.getElementById("logfile").innerHTML = logfileEntry;
+  }
 }

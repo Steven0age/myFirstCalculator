@@ -1,7 +1,7 @@
 .taschenrechner {
   display: flex;
   justify-content: flex-start;
-  max-width: 600px;
+  max-width: 800px;
 }
 .ergebnis {
   height: 40px;
@@ -18,7 +18,7 @@
 }
 .taschenrechnertasten {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 8px;
   padding-bottom: 8px;
 }
