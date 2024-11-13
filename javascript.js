@@ -16,10 +16,8 @@ function addNumberA(x) {
   if (wertA === false) {
     wertA = x;
     document.getElementById("ergebnis").innerHTML = wertA;
-    console.log("wertA = " + wertA);
   } else {
     wertA = wertA + String(x);
-    console.log("wertA = " + wertA);
     document.getElementById("ergebnis").innerHTML = wertA;
   }
 }
@@ -27,11 +25,9 @@ function addNumberA(x) {
 function addNumberB(x) {
   if (wertB === true) {
     wertB = x;
-    console.log("if-wertB = " + wertB);
     document.getElementById("ergebnis").innerHTML = wertB;
   } else {
     wertB = wertB + String(x);
-    console.log("else-wertB = " + wertB);
     document.getElementById("ergebnis").innerHTML = wertB;
   }
 }
@@ -49,7 +45,6 @@ function berechnungPlus() {
   } else {
     wertB = true;
     rechenart = "+";
-    console.log("WertA gespeichert:", wertA);
   }
 }
 
@@ -66,7 +61,6 @@ function berechnungMinus() {
   } else {
     wertB = true;
     rechenart = "-";
-    console.log("WertA gespeichert:", wertA);
   }
 }
 
@@ -81,7 +75,6 @@ function berechnungMal() {
   } else {
     wertB = true;
     rechenart = "*";
-    console.log("WertA gespeichert:", wertA);
   }
 }
 
@@ -96,7 +89,6 @@ function berechnungDurch() {
   } else {
     wertB = true;
     rechenart = "/";
-    console.log("WertA gespeichert:", wertA);
   }
 }
 
@@ -106,30 +98,24 @@ function istgleich() {
   }
   if (rechenart === "+" && wertB !== true) {
     rechenergebnis = Number(wertA) + Number(wertB);
-    document.getElementById("ergebnis").innerHTML = rechenergebnis;
     updateEntry();
-    console.log(rechenergebnis);
     wertA = rechenergebnis;
     wertB = true;
   }
   if (rechenart === "-" && wertB !== true) {
     rechenergebnis = Number(wertA) - Number(wertB);
-    document.getElementById("ergebnis").innerHTML = rechenergebnis;
     updateEntry();
-    console.log(rechenergebnis);
     wertA = rechenergebnis;
     wertB = true;
   }
   if (rechenart === "*") {
     rechenergebnis = Number(wertA) * Number(wertB);
-    document.getElementById("ergebnis").innerHTML = rechenergebnis;
     updateEntry();
     wertA = rechenergebnis;
     wertB = true;
   }
   if (rechenart === "/") {
     rechenergebnis = Number(wertA) / Number(wertB);
-    document.getElementById("ergebnis").innerHTML = rechenergebnis;
     updateEntry();
     wertA = rechenergebnis;
     wertB = true;
@@ -146,6 +132,7 @@ function reset() {
 
 function updateEntry() {
   if (logfileEntry == 0) {
+    document.getElementById("ergebnis").innerHTML = rechenergebnis;
     var newLogfileEntry = 0;
     newLogfileEntry = [
       "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>",
@@ -153,6 +140,7 @@ function updateEntry() {
     logfileEntry = newLogfileEntry;
     document.getElementById("logfile").innerHTML = logfileEntry;
   } else {
+    document.getElementById("ergebnis").innerHTML = rechenergebnis;
     newLogfileEntry =
       "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>";
     logfileEntry = newLogfileEntry + logfileEntry;
