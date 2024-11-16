@@ -1,11 +1,11 @@
-var rechenergebnis = 0;
-var wertA = false;
-var wertB = false;
-var rechenart = false;
-var logfileEntry = 0;
+let operationResult = 0;
+let valueA = false;
+let valueB = false;
+let operation = false;
+let logfileEntry = "";
 
-function pressTaste(x) {
-  if (wertB === false) {
+function pressKey(x) {
+  if (valueB === false) {
     addNumberA(x);
   } else {
     addNumberB(x);
@@ -13,137 +13,112 @@ function pressTaste(x) {
 }
 
 function addNumberA(x) {
-  if (wertA === false) {
-    wertA = x;
-    document.getElementById("ergebnis").innerHTML = wertA;
+  if (valueA === false) {
+    valueA = x;
   } else {
-    wertA = wertA + String(x);
-    document.getElementById("ergebnis").innerHTML = wertA;
+    valueA = valueA + String(x);
   }
+  document.getElementById("result").innerHTML = valueA;
 }
 
 function addNumberB(x) {
-  if (wertB === true) {
-    wertB = x;
-    document.getElementById("ergebnis").innerHTML = wertB;
+  if (valueB === true) {
+    valueB = x;
   } else {
-    wertB = wertB + String(x);
-    document.getElementById("ergebnis").innerHTML = wertB;
+    valueB = valueB + String(x);
+  }
+  document.getElementById("result").innerHTML = valueB;
+}
+
+function operationPlus() {
+  if (valueA !== false && valueB !== false && operation === "+") {
+    operationEquals();
+  } else if (valueA !== false && valueB !== false && operation !== "+") {
+    operationEquals();
+    operation = "+";
+  } else if (valueA === false) {
+    operation = "+";
+  } else {
+    valueB = true;
+    operation = "+";
   }
 }
 
-function berechnungPlus() {
-  if (wertB === true) {
-    return;
-  } else if (wertA !== false && wertB !== false && rechenart === "+") {
-    istgleich();
-  } else if (wertA !== false && wertB !== false && rechenart !== "+") {
-    istgleich();
-    rechenart = "+";
-  } else if (wertA === false) {
-    return;
+function operationMinus() {
+  if (valueA !== false && valueB !== false && operation === "-") {
+    operationEquals();
+  } else if (valueA !== false && valueB !== false && operation !== "-") {
+    operationEquals();
+    operation = "-";
+  } else if (valueA === false) {
+    operation = "-";
   } else {
-    wertB = true;
-    rechenart = "+";
+    valueB = true;
+    operation = "-";
   }
 }
 
-function berechnungMinus() {
-  if (wertB === true) {
-    return;
-  } else if (wertA !== false && wertB !== false && rechenart === "-") {
-    istgleich();
-  } else if (wertA !== false && wertB !== false && rechenart !== "-") {
-    istgleich();
-    rechenart = "-";
-  } else if (wertA === false) {
-    return;
+function operationMultiply() {
+  if (valueA !== false && valueB !== false && operation === "*") {
+    operationEquals();
+  } else if (valueA !== false && valueB !== false && operation !== "*") {
+    operationEquals();
+    operation = "*";
+  } else if (valueA === false) {
+    operation = "*";
   } else {
-    wertB = true;
-    rechenart = "-";
+    valueB = true;
+    operation = "*";
   }
 }
 
-function berechnungMal() {
-  if (wertA !== false && wertB !== false && rechenart === "*") {
-    istgleich();
-  } else if (wertA !== false && wertB !== false && rechenart !== "*") {
-    istgleich();
-    rechenart = "*";
-  } else if (wertA === false) {
-    return;
+function operationDivide() {
+  if (valueA !== false && valueB !== false && operation === "/") {
+    operationEquals();
+  } else if (valueA !== false && valueB !== false && operation !== "/") {
+    operationEquals();
+    operation = "/";
+  } else if (valueA === false) {
+    operation = "/";
   } else {
-    wertB = true;
-    rechenart = "*";
+    valueB = true;
+    operation = "/";
   }
 }
 
-function berechnungDurch() {
-  if (wertA !== false && wertB !== false && rechenart === "/") {
-    istgleich();
-  } else if (wertA !== false && wertB !== false && rechenart !== "/") {
-    istgleich();
-    rechenart = "/";
-  } else if (wertA === false) {
+function operationEquals() {
+  if (valueB === true || valueB === false) {
     return;
-  } else {
-    wertB = true;
-    rechenart = "/";
   }
+  if (operation === "+") {
+    operationResult = Number(valueA) + Number(valueB);
+  }
+  if (operation === "-") {
+    operationResult = Number(valueA) - Number(valueB);
+  }
+  if (operation === "*") {
+    operationResult = Number(valueA) * Number(valueB);
+  }
+  if (operation === "/") {
+    operationResult = Number(valueA) / Number(valueB);
+  }
+  document.getElementById("result").innerHTML = operationResult;
+  updateLogfile();
+  valueA = operationResult;
+  valueB = true;
 }
-
-function istgleich() {
-  if (wertB === true) {
-    return;
-  }
-  if (rechenart === "+" && wertB !== true) {
-    rechenergebnis = Number(wertA) + Number(wertB);
-    updateEntry();
-    wertA = rechenergebnis;
-    wertB = true;
-  }
-  if (rechenart === "-" && wertB !== true) {
-    rechenergebnis = Number(wertA) - Number(wertB);
-    updateEntry();
-    wertA = rechenergebnis;
-    wertB = true;
-  }
-  if (rechenart === "*") {
-    rechenergebnis = Number(wertA) * Number(wertB);
-    updateEntry();
-    wertA = rechenergebnis;
-    wertB = true;
-  }
-  if (rechenart === "/") {
-    rechenergebnis = Number(wertA) / Number(wertB);
-    updateEntry();
-    wertA = rechenergebnis;
-    wertB = true;
-  }
+function updateLogfile() {
+  let newLogfileEntry =
+    "<p>" + valueA + operation + valueB + " = " + operationResult + "</p>";
+  logfileEntry = newLogfileEntry + logfileEntry;
+  document.getElementById("logfile").innerHTML = logfileEntry;
 }
 
 function reset() {
-  wertA = false;
-  wertB = false;
-  rechenergebnis = 0;
-  document.getElementById("ergebnis").innerHTML = rechenergebnis;
+  valueA = false;
+  valueB = false;
+  operationResult = 0;
+  logfileEntry = "";
+  document.getElementById("result").innerHTML = operationResult;
   document.getElementById("logfile").innerHTML = "";
-}
-
-function updateEntry() {
-  if (logfileEntry == 0) {
-    document.getElementById("ergebnis").innerHTML = rechenergebnis;
-    var newLogfileEntry = 0;
-    newLogfileEntry = [
-      "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>",
-    ];
-    logfileEntry = newLogfileEntry;
-    document.getElementById("logfile").innerHTML = logfileEntry;
-  } else {
-    document.getElementById("ergebnis").innerHTML = rechenergebnis;
-    newLogfileEntry =
-      "<p>" + wertA + rechenart + wertB + " = " + rechenergebnis + "</p>";
-    logfileEntry = newLogfileEntry + logfileEntry;
-    document.getElementById("logfile").innerHTML = logfileEntry;
-  }
 }

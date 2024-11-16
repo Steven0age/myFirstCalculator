@@ -1,9 +1,9 @@
-.taschenrechner {
+.calculator {
   display: flex;
   justify-content: flex-start;
   max-width: 800px;
 }
-.ergebnis {
+.result {
   height: 40px;
   display: flex;
   justify-content: end;
@@ -11,18 +11,18 @@
   font-size: 30px;
   padding-right: 8px;
 }
-.taschenrechnerfeld {
+.calculatorField {
   display: flex;
   flex-direction: column;
   width: 70vw;
 }
-.taschenrechnertasten {
+.calculatorKeys {
   display: flex;
   flex-wrap: nowrap;
   gap: 8px;
   padding-bottom: 8px;
 }
-.taste {
+.key {
   width: 23%;
   height: 50px;
   font-size: 20px;
@@ -30,14 +30,23 @@
   border-width: 1px;
   border-color: #434343;
 }
-.zahl {
+.number {
   background-color: #f0f3f4;
 }
-.zeichen {
+.number:hover {
+  background-color: #e0e2e3;
+}
+.operator {
   background-color: #d9dce0;
 }
-.istgleichzeichen {
+.operator:hover {
+  background-color: #bfc2c6;
+}
+.equals {
   background-color: #4284f3;
+}
+.equals:hover {
+  background-color: #3475e6;
 }
 
 .logfile {

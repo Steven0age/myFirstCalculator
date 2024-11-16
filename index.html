@@ -14,34 +14,32 @@
   <body>
     <h1>Mein erster Taschenrechner</h1>
     <hr />
-    <div class="taschenrechner">
-      <div class="taschenrechnerfeld">
-        <span id="ergebnis" class="ergebnis">0</span>
-        <div class="taschenrechnertasten">
-          <button class="taste zahl" onclick="pressTaste(7)">7</button>
-          <button class="taste zahl" onclick="pressTaste(8)">8</button>
-          <button class="taste zahl" onclick="pressTaste(9)">9</button>
-          <button class="taste zeichen" onclick="berechnungDurch()">/</button>
+    <div class="calculator">
+      <div class="calculatorField">
+        <span id="result" class="result">0</span>
+        <div class="calculatorKeys">
+          <button class="key number" onclick="pressKey(7)">7</button>
+          <button class="key number" onclick="pressKey(8)">8</button>
+          <button class="key number" onclick="pressKey(9)">9</button>
+          <button class="key operator" onclick="operationDivide()">/</button>
         </div>
-        <div class="taschenrechnertasten">
-          <button class="taste zahl" onclick="pressTaste(4)">4</button>
-          <button class="taste zahl" onclick="pressTaste(5)">5</button>
-          <button class="taste zahl" onclick="pressTaste(6)">6</button>
-          <button class="taste zeichen" onclick="berechnungMal()">*</button>
+        <div class="calculatorKeys">
+          <button class="key number" onclick="pressKey(4)">4</button>
+          <button class="key number" onclick="pressKey(5)">5</button>
+          <button class="key number" onclick="pressKey(6)">6</button>
+          <button class="key operator" onclick="operationMultiply()">*</button>
         </div>
-        <div class="taschenrechnertasten">
-          <button class="taste zahl" onclick="pressTaste(1)">1</button>
-          <button class="taste zahl" onclick="pressTaste(2)">2</button>
-          <button class="taste zahl" onclick="pressTaste(3)">3</button>
-          <button class="taste zeichen" onclick="berechnungMinus()">-</button>
+        <div class="calculatorKeys">
+          <button class="key number" onclick="pressKey(1)">1</button>
+          <button class="key number" onclick="pressKey(2)">2</button>
+          <button class="key number" onclick="pressKey(3)">3</button>
+          <button class="key operator" onclick="operationMinus()">-</button>
         </div>
-        <div class="taschenrechnertasten">
-          <button class="taste zeichen" onclick="reset()">CE</button>
-          <button class="taste zahl" onclick="pressTaste(0)">0</button>
-          <button class="taste istgleichzeichen" onclick="istgleich()">
-            =
-          </button>
-          <button class="taste zeichen" onclick="berechnungPlus()">+</button>
+        <div class="calculatorKeys">
+          <button class="key operator" onclick="reset()">CE</button>
+          <button class="key number" onclick="pressKey(0)">0</button>
+          <button class="key equals" onclick="operationEquals()">=</button>
+          <button class="key operator" onclick="operationPlus()">+</button>
         </div>
         <p>Danke an Lisa und Karsten</p>
       </div>
